@@ -5,7 +5,10 @@
 </head>
 <body>
     <h2>Register</h2>
-    <form method="POST" action="/register" enctype="multipart/form-data">
+      {% if error %}
+        <div style="color: red;">{{ error }}</div>  <!-- Display the error message -->
+    {% endif %}
+   <form method="POST" action="{{ url_for('register') }}" enctype="multipart/form-data">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" required><br>
 
@@ -21,7 +24,7 @@
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required><br>
 
-        <label for="file">Upload Limerick File:</label>
+        <label for="file">Upload Limerick File (Optional):</label>
         <input type="file" name="file" id="file" required><br>
 
         <input type="submit" value="Register">
